@@ -1,11 +1,13 @@
 import { useParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { AuthedUserContext } from '../../App';
+import { useState, useEffect, useContext } from 'react';
 import * as hootService from '../../services/hootService';
 import CommentForm from '../CommentForm/CommentForm';
 
 const HootDetails = (props) => {
 
   const [hoot, setHoot] = useState(null);
+  const user = useContext(AuthedUserContext);
 
   const { hootId } = useParams();
 
@@ -33,6 +35,11 @@ const HootDetails = (props) => {
           {hoot.author.username} posted on
           {new Date(hoot.createdAt).toLocaleDateString()}
         </p>
+        {hoot.author._id === user._id && (
+          <>
+            <button onClick={() => props.handleDeleteHoot(hootId)}>Delete</button>
+          </>
+        )}
       </header>
       <p>{hoot.text}</p>
       <section>
