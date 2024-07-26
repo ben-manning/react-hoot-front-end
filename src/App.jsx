@@ -18,11 +18,11 @@ const App = () => {
   useEffect(() => {
     const fetchAllHoots = async () => {
       const hootsData = await hootService.index();
-      console.log('hootsData:', hootsData);
+      setHoots(hootsData);
     }
 
     if (user) fetchAllHoots();
-  }, [user])
+  }, [user]);
 
   const handleSignout = () => {
     authService.signout();
@@ -37,7 +37,7 @@ const App = () => {
           {user ? (
             <>
               <Route path="/" element={<Dashboard user={user} />} />
-              <Route path="/hoots" element={<HootList />} />
+              <Route path="/hoots" element={<HootList hoots={hoots} />} />
             </>
             
           ) : (
