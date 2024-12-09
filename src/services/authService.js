@@ -4,7 +4,7 @@ const BACKEND_URL = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 
 const signup = async (formData) => {
   try {
-    const res = await axios.post(`${BACKEND_URL}/users/signup`, formData)
+    const res = await axios.post(`${BACKEND_URL}/auth/signup`, formData)
 
     if (res.data.error) {
       throw new Error(res.data.error);
@@ -25,7 +25,7 @@ const signup = async (formData) => {
 
 const signin = async (user) => {
   try {
-    const res = await axios.post(`${BACKEND_URL}/users/signin`, user);
+    const res = await axios.post(`${BACKEND_URL}/auth/signin`, user);
 
     if (res.data.error) {
       throw new Error(res.data.error);
