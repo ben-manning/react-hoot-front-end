@@ -6,6 +6,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
 import HootList from './components/HootList/HootList';
+import HootDetails from './components/HootDetails/HootDetails';
 import * as authService from '../src/services/authService';
 import * as hootService from '../src/services/hootService';
 
@@ -35,6 +36,7 @@ const App = () => {
           <>
             <Route path="/" element={<Dashboard user={user} />} />
             <Route path='/hoots' element={<HootList hoots={hoots} />} />
+            <Route path='/hoots/:hootId' element={<HootDetails /> } />
           </>
           
         ) : (
