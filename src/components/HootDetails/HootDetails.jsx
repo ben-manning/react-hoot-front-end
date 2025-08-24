@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router";
 import { useState, useEffect, useContext } from 'react';
 import styles from './HootDetails.module.css';
+import Loading from '../Loading/Loading';
 
 import CommentForm from "../CommentForm/CommentForm";
 
@@ -37,7 +38,7 @@ const HootDetails = (props) => {
     })
   }
 
-  if (!hoot) return <main>Loading...</main>;
+  if (!hoot) return <Loading />;
 
   return (
     <main className={styles.container}>
