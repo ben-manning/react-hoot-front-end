@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router';
 import styles from './CommentForm.module.css';
+import Icon from '../Icon/Icon';
 
 import * as hootService from '../../services/hootService';
 
@@ -64,7 +65,9 @@ const CommentForm = (props) => {
         value={formData.text}
         onChange={handleChange}
       />
-      <button type='submit'>SUBMIT COMMENT</button>
+      <button type='submit'>
+        <Icon category='Create' />
+      </button>
     </form>
   );
 };
