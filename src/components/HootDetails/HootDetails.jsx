@@ -3,6 +3,8 @@ import { useState, useEffect, useContext } from 'react';
 import styles from './HootDetails.module.css';
 import Loading from '../Loading/Loading';
 import Icon from '../Icon/Icon';
+import AuthorInfo from '../../components/AuthorInfo/AuthorInfo';
+
 
 import CommentForm from "../CommentForm/CommentForm";
 
@@ -48,10 +50,7 @@ const HootDetails = (props) => {
           <p>{hoot.category.toUpperCase()}</p>
           <h1>{hoot.title}</h1>
           <div>
-          <p>
-            {`${hoot.author.username} posted on
-            ${new Date(hoot.createdAt).toLocaleDateString()}`}
-          </p>
+          <AuthorInfo content={hoot} />
           {hoot.author._id === user._id && (
             <>
               <Link to={`/hoots/${hootId}/edit`}>
@@ -76,10 +75,7 @@ const HootDetails = (props) => {
           <article key={comment._id}>
             <header>
               <div>
-              <p>
-                {`${comment.author.username} posted on
-                ${new Date(comment.createdAt).toLocaleDateString()}`}
-              </p>
+              <AuthorInfo content={comment} />
               {comment.author._id === user._id && (
               <> 
                 <Link to={`/hoots/${hootId}/comments/${comment._id}/edit`} >

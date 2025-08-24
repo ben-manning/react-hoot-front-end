@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import styles from './HootList.module.css';
 import Icon from '../Icon/Icon';
+import AuthorInfo from '../../components/AuthorInfo/AuthorInfo';
 
 
 const HootList = (props) => {
@@ -15,10 +16,7 @@ const HootList = (props) => {
                 <Icon category={hoot.category} />
               </div>
               
-              <p>
-                {`${hoot.author.username} posted on
-                ${new Date(hoot.createdAt).toLocaleDateString()}`}
-              </p>
+              <AuthorInfo content={hoot} />
             </header>
             <p>{hoot.text}</p>
           </article>
